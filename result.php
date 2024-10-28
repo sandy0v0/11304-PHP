@@ -62,7 +62,7 @@ if($bmi<18.5){
 <div>體位判定為:<?=$level;?></div>
 <div>
     <!-- ?bmi=<?=$bmi;?>代表，如果第二次使用者，會顯示前一次的BMI值 -->
-    <a href="index.php?bmi=<?=$bmi;?>">重首頁/重新量測</a>
+    <a href="bmi.php?bmi=<?=$bmi;?>">重首頁/重新量測</a>
 </div>
 
 </body>
