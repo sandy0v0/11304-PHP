@@ -159,14 +159,17 @@ for($i=0;$i<6;$i++){
         
         echo "<td class='$isHoliday $theMonth $isToday'>";
         echo date("d",$theDayTime); //顯示日期
+
+        //如果有特定日期程式撰寫
         if(isset($spDate[date("Y-m-d",$theDayTime)])){
             echo "<br>{$spDate[date("Y-m-d",$theDayTime)]}";
         }
 
+        //國定假日程式撰寫(如果想要改成不同顏色，要再上面新增CSS判斷)
+        //目前是農曆的節日要再另外設計
         if(isset($holidays[date("m-d",$theDayTime)])){
             echo "<br>{$holidays[date("m-d",$theDayTime)]}";
         }
-
 
 
         echo "</td>";
