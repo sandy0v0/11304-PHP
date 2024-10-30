@@ -12,11 +12,14 @@
 <style>
     table {
         border-collapse:collapse; /* 使邊框合併 */
+        margin:auto;
+        /* background: rgb(<?rand(50,250);?>,<?rand(50,250);?>,<?rand(50,250);?>); */
     }
     td{
         padding: 5px 10px; /* 單元格內的邊距 */
         text-align:center; /* 文字居中 */
         border:1px solid #999; /* 邊框顏色 */
+        width: 65px;
     }
     .holiday{
         background: pink; /* 假日的背景顏色 */
@@ -30,7 +33,14 @@
         color: white; /* 今天的文字顏色 */
         font-weight:bolder; /* 加粗字體 */
     }
-
+    .nav{
+        width: 686px;
+        margin:auto;
+    }
+    .nav table td{
+        border:0px;
+        padding:0;
+    }
 </style>
 
 </table>
@@ -42,12 +52,6 @@
     <li>有前年和來年的按鈕</li>
 </ul>
 
-<ul>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-</ul>
 <?php
 
 if(isset($_GET['month'])){
@@ -81,13 +85,23 @@ if($month+1>12){
 
 
 ?>
-
-<a href="calendar.php?year=<?=$year-2;?>">前年</a>
-<a href="calendar.php?year=<?=$prevYear;?>&month=<?=$prevMonth;?>">上一個月</a>
-<a href="calendar.php?year=<?=$nextYear;?>&month=<?=$nextMonth;?>">下一個月</a>
-<a href="calendar.php?year=<?=$year+1;?>">明年</a>
-<h3><?php echo "{$year}年 {$month}月";?></h3>
-
+<div class='nav'>
+    <table style="width:100%">
+        <tr>
+            <td style='text-align:left'>
+                <a href="calendar.php?year=<?=$year-2;?>">前年</a>
+                <a href="calendar.php?year=<?=$prevYear;?>&month=<?=$prevMonth;?>">上一個月</a>
+    </td>
+    <td>
+        <?php echo "{$year}年 {$month}月";?>
+    </td>
+    <td style='text-align:right'>
+        <a href="calendar.php?year=<?=$nextYear;?>&month=<?=$nextMonth;?>">下一個月</a>
+        <a href="calendar.php?year=<?=$year+1;?>">明年</a>
+    </td>
+</tr>
+</table>
+</div>
 <table>
 <tr>
     <td></td>
