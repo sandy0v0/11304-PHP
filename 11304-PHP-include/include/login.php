@@ -7,11 +7,9 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
     <?php 
-    $page= "login";
+   $page= "login";
     include("common/navbar.php"); ?>
-
     <main>
         <h2>請登入</h2>
         <form action="handle_login.php" method="POST">
@@ -27,5 +25,6 @@
         </form>
     </main>
     <?php include("common/footer.html"); ?>
+
 </body>
 </html>

@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>聯絡我們</h1>
+
     <?php 
         $page= "contact";
     include("common/navbar.php"); ?>

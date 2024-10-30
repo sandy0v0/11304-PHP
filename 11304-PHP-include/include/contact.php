@@ -3,21 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>聯絡我們</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
     <?php 
-        $page= "index";
+    $page= "contact";
     include("common/navbar.php"); ?>
-
     <main>
-        <h2>歡迎光臨</h2>
-        <p>這是一個網站的首頁</p>
+        <h2>歡迎聯絡我們</h2>
+        <p>我們提供最好的服務</p>
     </main>
-<?php include("common/footer.html"); ?>
-
-
+    <?php include("common/footer.html"); ?>
+    
 </body>
 </html>

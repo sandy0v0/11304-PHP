@@ -11,7 +11,6 @@ $header=[
 
 ?>
 
-
 <h1><?=$header[$page];?></h1>
 <?php
 foreach($header as $key => $value){

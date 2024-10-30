@@ -7,10 +7,11 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  
-<?php 
+
+<?php
+
 $page= "about";
-include("common/navbar.php"); ?>
+ include("common/navbar.php"); ?>
 
 <main>
     <h2>我們是一家很棒的公司</h2>

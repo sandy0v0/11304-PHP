@@ -7,16 +7,19 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-    <?php 
+    
+    <?php
         $page= "index";
-    include("common/navbar.php"); ?>
+     include("common/navbar.php"); 
+     ?>
 
     <main>
         <h2>歡迎光臨</h2>
         <p>這是一個網站的首頁</p>
     </main>
-<?php include("common/footer.html"); ?>
+
+    <?php include("common/footer.html"); ?>
+
 
 
 </body>
