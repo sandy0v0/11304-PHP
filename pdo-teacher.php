@@ -23,6 +23,7 @@ $rows=$pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
     table tr:nth-child(1) td{
         background-color: #cc6;
         color:darkorange;
+        /* 加上陰影 */
         text-shadow: 2px 2px 2px #fff;
     }
     table td{
