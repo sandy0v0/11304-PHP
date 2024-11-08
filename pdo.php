@@ -54,6 +54,33 @@ foreach($rows as $row){
 }
 
 ?>
+
+<br>
+
+
+<?php
+
+
+$dsn="mysql:host=localhost;charset=utf8;dbname=school";
+$pdo=new PDO($dsn,'root','');
+
+$sql="select * from classes";
+
+$rows=$pdo->query($sql)->fetchall(PDO::FETCH_ASSOC);
+
+foreach($rows as $row){
+    echo $row['id']."-".$row['name']."-".$row['tutor']."<br>";
+}
+
+
+// echo "<pre>";
+// print_r($rows);
+// echo "</pre>";
+
+
+?>
+
+
 </table>
 
 
