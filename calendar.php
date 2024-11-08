@@ -23,7 +23,7 @@
     }
     .holiday{
         background: pink; /* 假日的背景顏色 */
-        color: #999; /* 假日的文字顏色 */
+        color: red; /* 假日的文字顏色 */
     }
     .grey-text{
         color: #999; /* 非當月日期的文字顏色 */
