@@ -66,13 +66,21 @@ if (count($rows) > 0) {
     foreach ($rows as $row) {
         echo "<tr>";
         echo "<td>" . htmlspecialchars($row['id']) . "</td>";
-        echo "<td>" . htmlspecialchars($row['name']) . "</td>";
+        echo "<td>" ."<a href=classes_detail.php?id=".$row['code'].">".htmlspecialchars($row['name']) ;
+        echo "</td>";
         echo "<td>" . htmlspecialchars($row['tutor']) . "</td>";
         echo "</tr>";
     }
     
     echo "</tbody>";
     echo "</table>";
+
+    echo "<pre>";
+    print_r($rows);
+    echo "</pre>";
+
+
+
 } else {
     echo "<p>No data found</p>";
 }
