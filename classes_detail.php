@@ -41,7 +41,7 @@ $class=$pdo->query($class_sql)->fetch(PDO::FETCH_ASSOC);
 </style>
 </head>
 <body>
-<h1><?=$class['id'];?>班級學員</h1>  
+<h1><?=$class['name'];?>班級學員</h1>  
 <h2>班級導師<?=$class['tutor'];?></h2>
 <?php
 $class_members="select school_num,seat_num from class_student where class_code='{$class['code']}'";
