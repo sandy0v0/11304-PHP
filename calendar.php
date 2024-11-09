@@ -10,27 +10,30 @@
 </body>
 
 <style>
+    body {
+    text-align: center ; /* 設定容器的樣式，使按鈕居中顯示 */
+    }
     table {
-        width: 650px;
-        height: 70px;
+        width: 700px;
+        height: 80px;
         /* border-collapse:collapse; 使邊框合併 */
-        margin:auto;
+        margin:auto;        
         /* background: rgb(<?rand(50,250);?>,<?rand(50,250);?>,<?rand(50,250);?>); */
     }
 
     th {
-    font-size: 20px; /* 調整星期標題的字體大小 */
+    font-size: 18px; /* 調整星期標題的字體大小 */
     padding: 15px 0; /* 調整星期標題的內邊距 */
     }
 
-    td{
-        width: 90px;
+    td {
+        width: 100px;
         height: 50px;
         padding: 10px 10px; /* 單元格內的邊距 */
         text-align:center; /* 文字居中 */
-        border:1px solid #999; /* 邊框顏色 */
-        border-radius: 20%;  /* 使日期框變圓形 */
-        font-size: 18px;  /* 調整日期框字體大小 */
+        border:2px solid #999; /* 邊框顏色 */
+        border-radius: 25%;  /* 使日期框變圓形 */
+        font-size: 22px;  /* 調整日期框字體大小 */
     }
     .holiday{
         background: pink; /* 假日的背景顏色 */
@@ -45,27 +48,84 @@
         font-weight:bolder; /* 加粗字體 */
     }
     .nav{
-        width: 686px;
+        width: 700px;
         margin:auto;
     }
-    .nav table td{
-        border:0px;
-        padding:0;
+
+    .nav td{
+        font-size: 30px;
+        border:10px;
+        padding:10px 10px;
+        text-decoration: none;
+
     }
 
     .today-button {
-    text-align: 150px  ; /* 設定容器的樣式，使按鈕居中顯示 */
+    text-align: center ; /* 設定容器的樣式，使按鈕居中顯示 */
     }
 
     /* 設定按鈕的樣式 */
     .today-link {
-    padding: 5px 10px; /* 按鈕的內邊距，上下5px，左右10px */
+    padding: 10px 245px 10px; /* 按鈕的內邊距 */
     background-color: lightblue; /* 按鈕的背景顏色 */
     color: white; /* 按鈕的文字顏色 */
     text-decoration: none; /* 取消超鏈接的下劃線 */
-    border-radius: 5px; /* 按鈕的圓角效果 */
+    border-radius: 20px; /* 按鈕的圓角效果 */
     }
-    
+
+    /* 設定按鈕的樣式 */
+    .today-link1 {
+    padding: 10px 45px 10px; /* 按鈕的內邊距 */
+    background-color: lightblue; /* 按鈕的背景顏色 */
+    color: white; /* 按鈕的文字顏色 */
+    text-decoration: none; /* 取消超鏈接的下劃線 */
+    border-radius: 20px; /* 按鈕的圓角效果 */
+    }
+
+    .sp-date {
+    font-size: 12px; /* 特定日期的文字大小 */
+    color: #FFA500; /* 特定日期的文字顏色（橙色） */
+    font-weight: bold; /* 使文字加粗 */
+    }
+
+    .holiday-text {
+    padding: bottom;
+    font-size: 14px; /* 國定假日的文字大小 */
+    color: #FF4500; /* 國定假日的文字顏色（橘紅色） */
+    font-style: italic; /* 讓文字傾斜 */
+    }
+
+    /* 調整 << 和 >> 的樣式 */
+    .nextYear {
+        color: #fff;
+        background: rgba(255, 199, 95, 0.8);
+        border-radius: 50%; /* 設置為圓框 */
+        font-size: 24px; /* 調整大小 */
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: auto;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    /* 移除底線效果 */
+    .nextYear a {
+        color: white;
+        text-decoration: none;
+    }
+
+    /* 調整月份的字體大小 */
+    .month {
+        color: #333;
+        font-size: 30px;
+        background: rgba(255, 150, 113, 0.5);
+        border-radius: 20px;
+        padding: 10px 20px;
+        font-weight: bold;
+    }
 </style>
 
 </table>
@@ -133,19 +193,21 @@ $holidays = [
         <tr>
             <td style='text-align:left'>
                 <!-- <a href="calendar.php?year=<?=$year-2;?>">前年</a> -->
-                <a href="calendar.php?year=<?=$prevYearMonth;?>&month=<?=$month;?>">前年<<</a>
-                <a href="calendar.php?year=<?=$prevYear;?>&month=<?=$prevMonth;?>">上個月<</a>
-    </td>
-    <td>
-        <?php echo "{$year}年 {$month}月";?>
-    </td>
-    <td style='text-align:right'>
-        <a href="calendar.php?year=<?=$nextYear;?>&month=<?=$nextMonth;?>">>下個月</a>
-        <!-- <a href="calendar.php?year=<?=$year+1;?>">明年</a> -->
-        <a href="calendar.php?year=<?=$nextYearMonth;?>&month=<?=$month;?>">>>後年</a>
-    </td>
-</tr>
-</table>
+                <a href="calendar.php?year=<?=$prevYearMonth;?>&month=<?=$month;?>"><<</a>
+                <br>
+                <a href="calendar.php?year=<?=$prevYear;?>&month=<?=$prevMonth;?>"><</a>
+            </td>
+            <td>
+                <?php echo "{$year}年 <br> {$month}月";?>
+            </td>
+            <td style='text-align:right'>
+                <a href="calendar.php?year=<?=$nextYearMonth;?>&month=<?=$month;?>">>></a>
+                <br>
+                <a href="calendar.php?year=<?=$nextYear;?>&month=<?=$nextMonth;?>">></a>
+                <!-- <a href="calendar.php?year=<?=$year+1;?>">明年</a> -->      
+            </td>
+        </tr>
+    </table>
 </div>
 
 <!-- 「今天」按鈕 -->
@@ -159,13 +221,13 @@ $holidays = [
 <table>
 <tr>
     <!-- <td></td> -->
-    <th>日</th>
-    <th>一</th>
-    <th>二</th>
-    <th>三</th>
-    <th>四</th>
-    <th>五</th>
-    <th>六</th>
+    <th>SUN &nbsp; 日</th>
+    <th>MON &nbsp; 一</th>
+    <th>TUE &nbsp; 二</th>
+    <th>WED &nbsp; 三</th>
+    <th>THU &nbsp; 四</th>
+    <th>FRI &nbsp; 五</th>
+    <th>SAT &nbsp; 六</th>
 </tr>
 
 <?php
@@ -200,13 +262,13 @@ for($i=0;$i<6;$i++){
 
         //如果有特定日期程式撰寫
         if(isset($spDate[date("Y-m-d",$theDayTime)])){
-            echo "<br>{$spDate[date("Y-m-d",$theDayTime)]}";
+            echo "<br><span class='sp-date'>{$spDate[date("Y-m-d",$theDayTime)]}</span>";
         }
 
         //國定假日程式撰寫(如果想要改成不同顏色，要再上面新增CSS判斷)
         //目前是農曆的節日要再另外設計
         if(isset($holidays[date("m-d",$theDayTime)])){
-            echo "<br>{$holidays[date("m-d",$theDayTime)]}";
+            echo "<br><span class='holiday-text'>{$holidays[date("m-d",$theDayTime)]}</span>";
         }
 
 
@@ -219,6 +281,44 @@ for($i=0;$i<6;$i++){
 ?>
 
 </table>
+
+<br>
+<br>
+
+<div class='nav'>
+    <table style="width:100%">
+        <tr>
+            <td class="month" rowspan="2">
+                <?php echo " {$month}月";?>
+            </td>      
+            <td class="nextYear">
+                <a href="calendar.php?year=<?=$prevYearMonth;?>&month=<?=$month;?>">◄◄</a>                              
+            </td>
+            <td style="font-size: 36px; font-weight: bold;">
+                <?php echo "{$year}年" ;?>
+            </td>
+            <td class="nextYear">
+                <a href="calendar.php?year=<?=$nextYearMonth;?>&month=<?=$month;?>">►►</a>    
+            </td>
+        </tr>
+
+        <tr>
+        <td style='text-align:left'>
+            <a href="calendar.php?year=<?=$prevYear;?>&month=<?=$prevMonth;?>"><</a>
+        </td>
+        <td class="today-button">
+            <a href="calendar.php?year=<?php echo date('Y'); ?>&month=<?php echo date('m'); ?>" class="today-link1">
+            今天
+            </a>        
+        </td>
+        <td style='text-align:right'>
+            <a href="calendar.php?year=<?=$nextYear;?>&month=<?=$nextMonth;?>">></a>
+        </td>
+    </tr>
+
+    </table>
+</div>
+
 
 
 </html>
