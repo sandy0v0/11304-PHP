@@ -124,7 +124,7 @@ $holidays = [
 </div>
 <table>
 <tr>
-    <td></td>
+    <!-- <td></td> -->
     <td>日</td>
     <td>一</td>
     <td>二</td>
@@ -143,23 +143,24 @@ $firstDayWeek=date("w",$firstDayTime); // 獲取第一天是星期幾
 
 for($i=0;$i<6;$i++){
     echo "<tr>"; // 開始一行
-    echo "<td>";
-    echo $i+1;
-    echo "</td>";
+    // echo "<td>";
+    // echo $i+1; //顯示週數
+    // echo "</td>";
     for($j=0;$j<7;$j++){
         //echo "<td class='holiday'>";
         // 計算這個格子中的日期
         $cell=$i*7+$j -$firstDayWeek;
         $theDayTime=strtotime("$cell days".$firstDay);
 
-        //所需樣式css判斷
+        //所需樣式css判斷（假日、非當月等）
         $theMonth=(date("m",$theDayTime)==date("m",$firstDayTime))?'':'grey-text';
         $isToday=(date("Y-m-d",$theDayTime)==date("Y-m-d"))?'today':'';
         $w=date("w",$theDayTime);
         $isHoliday=($w==0 || $w==6)?'holiday':'';
         
+        //顯示日期
         echo "<td class='$isHoliday $theMonth $isToday'>";
-        echo date("d",$theDayTime); //顯示日期
+        echo date("d",$theDayTime); 
 
         //如果有特定日期程式撰寫
         if(isset($spDate[date("Y-m-d",$theDayTime)])){
