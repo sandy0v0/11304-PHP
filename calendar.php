@@ -12,8 +12,8 @@
 <style>
     body {
     text-align: center ; /* 設定容器的樣式，使按鈕居中顯示 */
-    background-image: url('/images/background.PNG'); /* 設定背景圖片 */
-    background-size: cover; /* 使圖片覆蓋整個背景 */
+    background-image: url('/images/background.PNG'); /*設定背景圖片*/
+    /* background-size: cover; 使圖片覆蓋整個背景 */
     background-position: center; /* 圖片置中 */
     background-repeat: no-repeat; /* 不重複顯示背景圖片 */
     background-attachment: fixed; /* 固定背景圖不隨捲動 */
@@ -49,14 +49,14 @@
         border-radius: 25%;  /* 使日期框變圓形 */
         font-size: 22px;  /* 調整日期框字體大小 */
     }
-    .holiday{
+    .holiday {
         background: pink; /* 假日的背景顏色 */
         color: red; /* 假日的文字顏色 */
     }
-    .grey-text{
+    .grey-text {
         color: #999; /* 非當月日期的文字顏色 */
     }
-    .today{
+    .today {
         background: blue; /* 今天的背景顏色 */
         color: white; /* 今天的文字顏色 */
         font-weight:bolder; /* 加粗字體 */
@@ -66,7 +66,7 @@
         margin:auto;
         background-color: rgba(255, 255, 255, 0.8); /* 加入白色半透明背景以強調選單 */
         border-radius: 8px;
-        padding: 10px;
+        padding: 1px;
     }
 
     .nav td{
@@ -79,6 +79,7 @@
 
     .today-button {
     text-align: center ; /* 設定容器的樣式，使按鈕居中顯示 */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     }
 
     /* 設定按鈕的樣式 */
@@ -144,6 +145,14 @@
         border-radius: 20px;
         padding: 10px 20px;
         font-weight: bold;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .year {
+        font-size: 36px; 
+        color: #999; 
+        font-weight: bold; 
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);"
     }
 </style>
 
@@ -320,7 +329,7 @@ for($i=0;$i<6;$i++){
             <td class="nextYear">
                 <a href="calendar.php?year=<?=$prevYearMonth;?>&month=<?=$month;?>">◄◄</a>                              
             </td>
-            <td style="font-size: 36px; color: #999; font-weight: bold;">
+            <td class="year" style="font-size: 36px;">
                 <?php echo "{$year}年" ;?>
             </td>
             <td class="nextYear">
