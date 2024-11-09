@@ -11,15 +11,26 @@
 
 <style>
     table {
-        border-collapse:collapse; /* 使邊框合併 */
+        width: 650px;
+        height: 70px;
+        /* border-collapse:collapse; 使邊框合併 */
         margin:auto;
         /* background: rgb(<?rand(50,250);?>,<?rand(50,250);?>,<?rand(50,250);?>); */
     }
+
+    th {
+    font-size: 20px; /* 調整星期標題的字體大小 */
+    padding: 15px 0; /* 調整星期標題的內邊距 */
+    }
+
     td{
-        padding: 5px 10px; /* 單元格內的邊距 */
+        width: 90px;
+        height: 50px;
+        padding: 10px 10px; /* 單元格內的邊距 */
         text-align:center; /* 文字居中 */
         border:1px solid #999; /* 邊框顏色 */
-        width: 65px;
+        border-radius: 20%;  /* 使日期框變圓形 */
+        font-size: 18px;  /* 調整日期框字體大小 */
     }
     .holiday{
         background: pink; /* 假日的背景顏色 */
@@ -41,6 +52,20 @@
         border:0px;
         padding:0;
     }
+
+    .today-button {
+    text-align: 150px  ; /* 設定容器的樣式，使按鈕居中顯示 */
+    }
+
+    /* 設定按鈕的樣式 */
+    .today-link {
+    padding: 5px 10px; /* 按鈕的內邊距，上下5px，左右10px */
+    background-color: lightblue; /* 按鈕的背景顏色 */
+    color: white; /* 按鈕的文字顏色 */
+    text-decoration: none; /* 取消超鏈接的下劃線 */
+    border-radius: 5px; /* 按鈕的圓角效果 */
+    }
+    
 </style>
 
 </table>
@@ -108,41 +133,52 @@ $holidays = [
         <tr>
             <td style='text-align:left'>
                 <!-- <a href="calendar.php?year=<?=$year-2;?>">前年</a> -->
-                <a href="calendar.php?year=<?=$prevYearMonth;?>&month=<?=$month;?>">前一年</a>
-                <a href="calendar.php?year=<?=$prevYear;?>&month=<?=$prevMonth;?>">上一個月</a>
+                <a href="calendar.php?year=<?=$prevYearMonth;?>&month=<?=$month;?>">前年<<</a>
+                <a href="calendar.php?year=<?=$prevYear;?>&month=<?=$prevMonth;?>">上個月<</a>
     </td>
     <td>
         <?php echo "{$year}年 {$month}月";?>
     </td>
     <td style='text-align:right'>
-        <a href="calendar.php?year=<?=$nextYear;?>&month=<?=$nextMonth;?>">下一個月</a>
+        <a href="calendar.php?year=<?=$nextYear;?>&month=<?=$nextMonth;?>">>下個月</a>
         <!-- <a href="calendar.php?year=<?=$year+1;?>">明年</a> -->
-        <a href="calendar.php?year=<?=$nextYearMonth;?>&month=<?=$month;?>">後一年</a>
+        <a href="calendar.php?year=<?=$nextYearMonth;?>&month=<?=$month;?>">>>後年</a>
     </td>
 </tr>
 </table>
 </div>
+
+<!-- 「今天」按鈕 -->
+<!-- 設定按鈕的連結，點擊後導向當前月份的日曆頁面 -->
+<div class="today-button">
+    <a href="calendar.php?year=<?php echo date('Y'); ?>&month=<?php echo date('m'); ?>" class="today-link">
+        今天
+    </a>
+</div>
+
 <table>
 <tr>
     <!-- <td></td> -->
-    <td>日</td>
-    <td>一</td>
-    <td>二</td>
-    <td>三</td>
-    <td>四</td>
-    <td>五</td>
-    <td>六</td>
+    <th>日</th>
+    <th>一</th>
+    <th>二</th>
+    <th>三</th>
+    <th>四</th>
+    <th>五</th>
+    <th>六</th>
 </tr>
 
 <?php
 
-$firstDay="{$year}-{$month}-1"; // 當月的第一天
+ // 計算當月的第一天
+$firstDay="{$year}-{$month}-1"; 
 /* $firstDay=date("Y-m-1"); */
 $firstDayTime=strtotime($firstDay); // 將第一天轉換成時間戳
 $firstDayWeek=date("w",$firstDayTime); // 獲取第一天是星期幾
 
+// 逐行顯示每一天
 for($i=0;$i<6;$i++){
-    echo "<tr>"; // 開始一行
+    echo "<tr>"; 
     // echo "<td>";
     // echo $i+1; //顯示週數
     // echo "</td>";
@@ -156,7 +192,7 @@ for($i=0;$i<6;$i++){
         $theMonth=(date("m",$theDayTime)==date("m",$firstDayTime))?'':'grey-text';
         $isToday=(date("Y-m-d",$theDayTime)==date("Y-m-d"))?'today':'';
         $w=date("w",$theDayTime);
-        $isHoliday=($w==0 || $w==6)?'holiday':'';
+        $isHoliday=($w==0 || $w==6)?'holiday':''; // 假日（星期六和星期天）
         
         //顯示日期
         echo "<td class='$isHoliday $theMonth $isToday'>";
