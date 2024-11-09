@@ -83,7 +83,7 @@
 
     /* 設定按鈕的樣式 */
     .today-link {
-    padding: 10px 245px 10px; /* 按鈕的內邊距 */
+    padding: 10px 330px 10px; /* 按鈕的內邊距 */
     background-color: lightblue; /* 按鈕的背景顏色 */
     color: white; /* 按鈕的文字顏色 */
     text-decoration: none; /* 取消超鏈接的下劃線 */
