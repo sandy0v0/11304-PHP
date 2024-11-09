@@ -66,7 +66,7 @@
         margin:auto;
         background-color: rgba(255, 255, 255, 0.8); /* 加入白色半透明背景以強調選單 */
         border-radius: 8px;
-        padding: 1px;
+        padding: 10px;
     }
 
     .nav td{
