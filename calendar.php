@@ -46,12 +46,6 @@
 </table>
 
 
-<ul>
-    <li>有上一個月下一個月的按鈕</li>
-    <li>萬年曆都在同一個頁面同一個檔案</li>
-    <li>有前年和來年的按鈕</li>
-</ul>
-
 <?php
 
 if(isset($_GET['month'])){
@@ -66,6 +60,7 @@ if (isset($_GET['year'])) {
     $year = date("Y");
 }
 
+// 計算前一個月和前一年的月份
 if($month-1<1){
     $prevMonth=12;
     $prevYear=$year-1;
@@ -74,7 +69,7 @@ if($month-1<1){
     $prevYear=$year;
 }
 
-
+// 計算下一個月和後一年的月份
 if($month+1>12){
     $nextMonth=1;
     $nextYear=$year+1;
@@ -82,6 +77,10 @@ if($month+1>12){
     $nextMonth=$month+1;
     $nextYear=$year;
 }
+
+// 計算前一年與後一年
+$prevYearMonth = $year - 1;
+$nextYearMonth = $year + 1;
 
 $spDate=[
 '2024-11-07'=>"立冬",
@@ -108,7 +107,8 @@ $holidays = [
     <table style="width:100%">
         <tr>
             <td style='text-align:left'>
-                <a href="calendar.php?year=<?=$year-2;?>">前年</a>
+                <!-- <a href="calendar.php?year=<?=$year-2;?>">前年</a> -->
+                <a href="calendar.php?year=<?=$prevYearMonth;?>&month=<?=$month;?>">前一年</a>
                 <a href="calendar.php?year=<?=$prevYear;?>&month=<?=$prevMonth;?>">上一個月</a>
     </td>
     <td>
@@ -116,7 +116,8 @@ $holidays = [
     </td>
     <td style='text-align:right'>
         <a href="calendar.php?year=<?=$nextYear;?>&month=<?=$nextMonth;?>">下一個月</a>
-        <a href="calendar.php?year=<?=$year+1;?>">明年</a>
+        <!-- <a href="calendar.php?year=<?=$year+1;?>">明年</a> -->
+        <a href="calendar.php?year=<?=$nextYearMonth;?>&month=<?=$month;?>">後一年</a>
     </td>
 </tr>
 </table>
