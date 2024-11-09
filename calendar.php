@@ -12,13 +12,27 @@
 <style>
     body {
     text-align: center ; /* 設定容器的樣式，使按鈕居中顯示 */
+    background-image: url('/images/background.PNG'); /* 設定背景圖片 */
+    background-size: cover; /* 使圖片覆蓋整個背景 */
+    background-position: center; /* 圖片置中 */
+    background-repeat: no-repeat; /* 不重複顯示背景圖片 */
+    background-attachment: fixed; /* 固定背景圖不隨捲動 */
     }
+
+    /* 設定背景上文字的顏色和樣式，以確保在背景圖上清晰可見 */
+    h1 {
+        color: lightcoral;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* 添加陰影提高可讀性 */
+    }
+
     table {
         width: 700px;
         height: 80px;
         /* border-collapse:collapse; 使邊框合併 */
         margin:auto;        
         /* background: rgb(<?rand(50,250);?>,<?rand(50,250);?>,<?rand(50,250);?>); */
+        background-color: rgba(255, 255, 255, 0.9); /* 增加日曆的白色半透明背景 */
+        border-radius: 8px;
     }
 
     th {
@@ -50,6 +64,9 @@
     .nav{
         width: 700px;
         margin:auto;
+        background-color: rgba(255, 255, 255, 0.8); /* 加入白色半透明背景以強調選單 */
+        border-radius: 8px;
+        padding: 10px;
     }
 
     .nav td{
