@@ -76,7 +76,8 @@
     /* 設定按鈕的樣式 */
     .today-link1 {
     padding: 10px 45px 10px; /* 按鈕的內邊距 */
-    background-color: lightblue; /* 按鈕的背景顏色 */
+    /* background-color: lightblue;  */
+    background: rgba(255, 150, 113, 0.5);
     color: white; /* 按鈕的文字顏色 */
     text-decoration: none; /* 取消超鏈接的下劃線 */
     border-radius: 20px; /* 按鈕的圓角效果 */
@@ -119,9 +120,10 @@
 
     /* 調整月份的字體大小 */
     .month {
-        color: #333;
+        color: white;
         font-size: 30px;
-        background: rgba(255, 150, 113, 0.5);
+        background-color: lightblue;
+        /* background: rgba(255, 150, 113, 0.5); */
         border-radius: 20px;
         padding: 10px 20px;
         font-weight: bold;
@@ -284,17 +286,24 @@ for($i=0;$i<6;$i++){
 
 <br>
 <br>
+<br>
+<br>
+<br>
+<br>
+
+
+
 
 <div class='nav'>
     <table style="width:100%">
         <tr>
-            <td class="month" rowspan="2">
+            <td class="month" rowspan="2" style="font-size: 36px;">
                 <?php echo " {$month}月";?>
             </td>      
             <td class="nextYear">
                 <a href="calendar.php?year=<?=$prevYearMonth;?>&month=<?=$month;?>">◄◄</a>                              
             </td>
-            <td style="font-size: 36px; font-weight: bold;">
+            <td style="font-size: 36px; color: #999; font-weight: bold;">
                 <?php echo "{$year}年" ;?>
             </td>
             <td class="nextYear">
@@ -319,6 +328,130 @@ for($i=0;$i<6;$i++){
     </table>
 </div>
 
+</table>
+
+
+<?php
+
+if(isset($_GET['month'])){
+    $month=$_GET['month']; // 如果有指定月份，使用它
+}else{
+    $month=date("m"); // 否則使用當前月份
+}
+
+if (isset($_GET['year'])) {
+    $year = $_GET['year'];
+} else {
+    $year = date("Y");
+}
+
+// 計算前一個月和前一年的月份
+if($month-1<1){
+    $prevMonth=12;
+    $prevYear=$year-1;
+}else{
+    $prevMonth=$month-1;
+    $prevYear=$year;
+}
+
+// 計算下一個月和後一年的月份
+if($month+1>12){
+    $nextMonth=1;
+    $nextYear=$year+1;
+}else{
+    $nextMonth=$month+1;
+    $nextYear=$year;
+}
+
+// 計算前一年與後一年
+$prevYearMonth = $year - 1;
+$nextYearMonth = $year + 1;
+
+$spDate=[
+'2024-11-07'=>"立冬",
+'2024-06-10' => "端午節",
+'2024-09-17' => "中秋節",
+'2025-05-31' => "端午節",
+'2025-10-06' => "中秋節",
+'2026-06-19' => "端午節",
+'2026-09-25' => "中秋節",
+'2024-11-22'=>"小雪"
+];
+
+$holidays = [
+'01-01' => "元旦",
+'02-10' => "農曆新年",
+'04-04' => "兒童節",
+'04-05' => "清明節",
+'05-01' => "勞動節",
+'10-10' => "國慶日",
+];
+
+?>
+
+<table>
+<tr>
+    <!-- <td></td> -->
+    <th>SUN &nbsp; 日</th>
+    <th>MON &nbsp; 一</th>
+    <th>TUE &nbsp; 二</th>
+    <th>WED &nbsp; 三</th>
+    <th>THU &nbsp; 四</th>
+    <th>FRI &nbsp; 五</th>
+    <th>SAT &nbsp; 六</th>
+</tr>
+
+<?php
+
+ // 計算當月的第一天
+$firstDay="{$year}-{$month}-1"; 
+/* $firstDay=date("Y-m-1"); */
+$firstDayTime=strtotime($firstDay); // 將第一天轉換成時間戳
+$firstDayWeek=date("w",$firstDayTime); // 獲取第一天是星期幾
+
+// 逐行顯示每一天
+for($i=0;$i<6;$i++){
+    echo "<tr>"; 
+    // echo "<td>";
+    // echo $i+1; //顯示週數
+    // echo "</td>";
+    for($j=0;$j<7;$j++){
+        //echo "<td class='holiday'>";
+        // 計算這個格子中的日期
+        $cell=$i*7+$j -$firstDayWeek;
+        $theDayTime=strtotime("$cell days".$firstDay);
+
+        //所需樣式css判斷（假日、非當月等）
+        $theMonth=(date("m",$theDayTime)==date("m",$firstDayTime))?'':'grey-text';
+        $isToday=(date("Y-m-d",$theDayTime)==date("Y-m-d"))?'today':'';
+        $w=date("w",$theDayTime);
+        $isHoliday=($w==0 || $w==6)?'holiday':''; // 假日（星期六和星期天）
+        
+        //顯示日期
+        echo "<td class='$isHoliday $theMonth $isToday'>";
+        echo date("d",$theDayTime); 
+
+        //如果有特定日期程式撰寫
+        if(isset($spDate[date("Y-m-d",$theDayTime)])){
+            echo "<br><span class='sp-date'>{$spDate[date("Y-m-d",$theDayTime)]}</span>";
+        }
+
+        //國定假日程式撰寫(如果想要改成不同顏色，要再上面新增CSS判斷)
+        //目前是農曆的節日要再另外設計
+        if(isset($holidays[date("m-d",$theDayTime)])){
+            echo "<br><span class='holiday-text'>{$holidays[date("m-d",$theDayTime)]}</span>";
+        }
+
+
+        echo "</td>";
+        
+    }
+    echo "</tr>"; // 結束一行
+}
+
+?>
+
+</table>
 
 
 </html>
