@@ -11,16 +11,18 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            height: 30vh;
             margin: 0;
+            
         }
         .login-container {
             background-color: white;
-            margin-top:1px;    
+            margin-top:100px;    
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             width: 300px;
+            margin: 50px auto 0; /* 控制表單距離上方的距離 */
         }
         h2 {
             text-align: center;
