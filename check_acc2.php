@@ -15,8 +15,8 @@ $acc=$_POST['acc'];
 $pw=$_POST['pw'];
 
 
-// $sql="select * from `member` where `acc`='$acc && `pw` =`$pw`'";
-$sql="select count(id) from `member` where `acc`='$acc' && `pw` ='$pw'";
+// $sql="select * from `member` where `acc`='$acc && `pw` =$pw'";
+$sql="select count(id) from `member` where `acc`='$acc && `pw` =$pw'";
 echo $sql;
 $row=$pdo->query($sql)->fetchColumn();
 
@@ -34,6 +34,8 @@ if($row>=1){
     // echo "帳密錯誤:登入失敗";
     // header("location:login2.php?err=1");
 }
+
+$row
 
 
 ?>

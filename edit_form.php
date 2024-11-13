@@ -88,11 +88,10 @@
     <h1>會員資料</h1>
     <!-- form:post>(label+input:text)*4+div>input:submit+input:reset -->
     <?php
+    $dsn="mysql:host=localhost;charset=utf8;dbname=crud";
+    $pdo=new PDO($dsn,'root','');
 
-
-
-
-
+    $mem=$pdo->query("select * from `member` where `id`='{$_GET['id']}'")->fetch(PDO::FETCH_ASSOC);
     ?>
 
     <form action="edit.php"method="post">
@@ -113,7 +112,8 @@
             <input type="text" name="tel" value="<?=$mem['tel'];?>">
         </div>
         <div>
-            <input type="submit" value="註冊">
+            <input type="hidden" name="id" value="<?=$mem['id'];?>">
+            <input type="submit" value="編輯">
             <input type="reset" value="重置">
         </div>
     </form>
