@@ -10,8 +10,8 @@
             background-color: #f2f2f2;
             display: flex;
             justify-content: center;
-            align-items: center;
-            height: 30vh;
+            align-items: start;
+            height: 100vh;
             margin: 0;
             
         }
@@ -59,7 +59,6 @@
 if(isset($_GET['err'])){
     echo "<h3 style='color:red;text-align:center'>帳號或密碼錯誤</h3>";
 }
-
 
 if(!isset($_COOKIE['login'])){
 ?>
